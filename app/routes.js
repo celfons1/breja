@@ -41,7 +41,7 @@ module.exports = function(app, passport) {
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
-        res.send('/');
+        res.send('index.html');
     });
 
     app.get('/brejas', function(req, res) {
@@ -63,11 +63,11 @@ module.exports = function(app, passport) {
             if (!user) {
               // *** Display message using Express 3 locals
               req.session.message = info.message;
-              return res.send('/');
+              return res.send('index.html');
             }
             req.logIn(user, function(err) {
               if (err) { return next(err); }
-              return res.send('/brejas');
+              return res.send('brejas.html');
             });
           })(req, res, next);
         });
@@ -89,7 +89,7 @@ module.exports = function(app, passport) {
             }
             req.logIn(user, function(err) {
               if (err) { return next(err); }
-              return res.send('/brejas');
+              return res.send('brejas.html');
             });
           })(req, res, next);
         });
