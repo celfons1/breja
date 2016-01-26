@@ -41,7 +41,11 @@ module.exports = function(app, passport) {
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
+<<<<<<< HEAD
         res.send('exit.html');
+=======
+        res.send('index.html');
+>>>>>>> ab8b9b99169d823f94644620567d44a345644fc2
     });
 
     app.get('/brejas', function(req, res) {
