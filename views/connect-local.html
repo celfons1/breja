@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br" ng-app="auth">
+<head>
+    <title>Node Authentication</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body ng-controller="authController">
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-user"></span> Add Local Account</h1>
+
+    <!-- LOGIN FORM -->
+    <form>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email" ng-model="formUser.email" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" ng-model="formUser.password" required>
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg" ng-click="registro()">Add Local</button>
+    </form>
+
+    <hr>
+
+</div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Angular) -->
+    <script src="js/angular.min.js"></script>
+    <script src="controllerUser.js"></script>
+</body>
+</html>
