@@ -1,15 +1,17 @@
-<!doctype html>
-<html>
-<head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        body         { padding-top:80px; word-wrap:break-word; }
-    </style>
-</head>
-<body>
-<div class="container">
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="auth">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BreJá</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body ng-controller="authController">
+    
+    <div class="container">
 
     <div class="page-header text-center">
         <a href="/logout" class="btn btn-default btn-sm">Sair</a>
@@ -85,5 +87,14 @@
 
 <a href='/brejas'>Principal</a>
 </div>
-</body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Angular) -->
+    <script src="js/angular.min.js"></script>
+    <script src="controllerUser.js"></script>
+
+  </body>
 </html>

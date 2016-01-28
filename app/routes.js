@@ -1,6 +1,5 @@
 module.exports = function(app, passport) {
 
-    
    app.use(function (req, res, next) {
 
         // Website you wish to allow to connect
@@ -41,11 +40,7 @@ module.exports = function(app, passport) {
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
-<<<<<<< HEAD
-        res.send('exit.html');
-=======
         res.send('index.html');
->>>>>>> ab8b9b99169d823f94644620567d44a345644fc2
     });
 
     app.get('/brejas', function(req, res) {
@@ -129,11 +124,21 @@ module.exports = function(app, passport) {
         app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
         // the callback after google has authenticated the user
-        app.get('/auth/google/callback',
-            passport.authenticate('google', {
-                successRedirect : '/brejas',
-                failureRedirect : '/'
-            }));
+        app.get('/auth/google/callback', function(req, res, next) {
+          passport.authenticate('google', function(err, user, info) {
+            if (err) { return next(err) }
+            if (!user) {
+              // *** Display message using Express 3 locals
+              req.session.message = info.message;
+              return res.render('index.html');
+            }
+            req.logIn(user, function(err) {
+              if (err) { return next(err); }
+              return res.render('brejas.html');
+            });
+          })(req, res, next);
+          console.log(req, res, next);
+        });
 
 // =============================================================================
 // AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT) =============
@@ -180,11 +185,22 @@ module.exports = function(app, passport) {
         app.get('/connect/google', passport.authorize('google', { scope : ['profile', 'email'] }));
 
         // the callback after google has authorized the user
-        app.get('/connect/google/callback',
-            passport.authorize('google', {
-                successRedirect : '/brejas',
-                failureRedirect : '/'
-            }));
+        app.get('/connect/google/callback', function(req, res, next) {
+          passport.authenticate('google', function(err, user, info) {
+            if (err) { return next(err) }
+            if (!user) {
+              // *** Display message using Express 3 locals
+              req.session.message = info.message;
+              return res.render('index.html');
+            }
+            req.logIn(user, function(err) {
+              if (err) { return next(err); }
+              return res.render('brejas.html');
+            });
+          })(req, res, next);
+          console.log(req, res, next);
+        });
+
 
 // =============================================================================
 // UNLINK ACCOUNTS =============================================================

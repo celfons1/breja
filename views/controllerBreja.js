@@ -62,12 +62,14 @@ function mainController($scope, $http) {
         });
     };
 
-    $scope.logout = function() {        
+    $scope.logout = function(id) {
         $http.get('http://10.4.128.109:8080/logout/')
-        .success( function(data){
-            window.location = data;
-        });
+            .success(function(data) {
+               window.location = data;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
     };
 
- 
 }
